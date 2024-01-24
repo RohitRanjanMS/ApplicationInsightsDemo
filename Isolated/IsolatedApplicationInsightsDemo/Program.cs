@@ -10,7 +10,7 @@ var host = new HostBuilder()
     .ConfigureServices(services =>
     {
         // Add your custom telemetry processor here.
-        //services.AddApplicationInsightsTelemetryProcessor<CustomTelemetryProcessor>();
+        services.AddApplicationInsightsTelemetryProcessor<CustomTelemetryProcessor>();
         services.AddApplicationInsightsTelemetryWorkerService();
         services.ConfigureFunctionsApplicationInsights();
         services.Configure<LoggerFilterOptions>(options =>
