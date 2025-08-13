@@ -15,6 +15,15 @@ namespace InProcApplicationInsightsDemo
         public override void Configure(IFunctionsHostBuilder builder)
         {
             builder.Services.AddSingleton<ITelemetryModule, MyModule>();
+            builder.Services.AddSingleton<ITelemetryInitializer, MyTelemetryInitializer>();
+        }
+    }
+
+    internal class MyTelemetryInitializer : ITelemetryInitializer
+    {
+        public void Initialize(ITelemetry telemetry)
+        {
+            telemetry.Context.Cloud.RoleName = "InProcApplicationInsightsDemo";
         }
     }
 
